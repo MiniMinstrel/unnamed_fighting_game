@@ -2,11 +2,27 @@ import * as Phaser from 'phaser';
 import PlayScene from './src/scenes/PlayScene';
 
 const config = {
-  name: 'app',
   type: Phaser.AUTO,
-  width: 800,
-  height: 600,
-  scene: [PlayScene],
+  parent: "phaser-example",
+  width: 1280,
+  height: 780,
+  dom: {
+      createContainer: true
+  },
+  scene: [
+      PlayScene,
+  ],
+  scale: {
+      mode: Phaser.Scale.FIT,
+      autoCenter: Phaser.Scale.CENTER_BOTH
+  },
+  physics: {
+    default: 'arcade',
+    arcade: {
+        debug: true,
+        gravity: { y: 600 }
+    }
+  },
 };
 
-window.game = new Phaser.Game(config);
+const game = new Phaser.Game(config);
